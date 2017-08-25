@@ -2,10 +2,10 @@
 
 var mongoose = require('mongoose');
 var app = require('./app');
-var port = process.env.PORT || 3979;
+var port = process.env.PORT || 27017;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/borzomi', {useMongoClient: true},(err, res) => {
+mongoose.connect('mongodb://mdb-bzmbsc-server-1/borzomi', {useMongoClient: true},(err, res) => {
     if (err) {
         throw err;
     } else {
