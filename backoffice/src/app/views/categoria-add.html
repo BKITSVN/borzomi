@@ -1,0 +1,20 @@
+﻿<h1 style="margin-top:0px">{{titulo}}</h1>
+<hr>
+<div class="col-lg-5">
+  <div *ngIf="alertMessage">
+    <div class="alert alert-info">
+      {{alertMessage}}
+    </div>
+  </div>
+  <form #formCategoria="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <p>
+      <label>Nombre</label>
+      <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="categoria.nombre" required class="form-control" />
+      <span *ngIf="!nombre.valid && nombre.touched">
+        El Nombre es obligatorio
+      </span>
+    </p>
+    <input type="submit" value="{{titulo}}" [disabled]="!formCategoria.form.valid" class="btn btn-success" />
+    <a *ngIf="is_edit" [routerLink]="['/categorias',1]"  class="btn btn-primary">Volver</a>
+  </form>
+</div>

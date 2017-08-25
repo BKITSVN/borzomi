@@ -1,0 +1,26 @@
+﻿<h1 style="margin-top:0px">{{titulo}}</h1>
+<hr>
+
+<div class="col-lg-5">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Coleccion</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let coleccion of colecciones">
+        <td>{{coleccion.nombre}}</td>
+        <td align="right">
+          <a  [routerLink]="['/editar-colecion',coleccion._id]"  class="btn btn-sm btn-warning">Modificar</a>
+          <a (click)="onDeleteCategoria(coleccion._id)" class="btn btn-sm btn-danger">Borrar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ul class="pagination" >
+    <li *ngFor="let number of pages" [ngClass]="{'active': number==page}" ><a href="#" [routerLink]="['/colecciones',number]">{{number}}</a></li>
+  </ul>
+
+</div>

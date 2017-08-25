@@ -1,0 +1,26 @@
+﻿<h1 style="margin-top:0px">{{titulo}}</h1>
+<hr>
+<div class="col-lg-5">
+  <div *ngIf="alertMessage">
+    <div class="alert alert-info">
+      {{alertMessage}}
+    </div>
+  </div>
+  <form #formSubCategoria="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="form-group">
+      <label for="categoria">Categoria</label>
+      <select class="form-control" name="categoria" #categoria="ngModel" [(ngModel)]="subcategoria.categoria">
+        <option *ngFor="let categoria of categorias" value="{{categoria._id}}" ng-selected="subcategoria.categoria._id==categoria._id">{{categoria.nombre}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="subcategoria.nombre" required class="form-control" />
+      <span *ngIf="!nombre.valid && nombre.touched">
+        El Nombre es obligatorio
+      </span>
+      </div>
+      <input type="submit" value="{{titulo}}" [disabled]="!formSubCategoria.form.valid" class="btn btn-success" />
+      <a *ngIf="is_edit" [routerLink]="['/subcategorias',1]" class="btn btn-primary">Volver</a>
+</form>
+</div>
